@@ -16,6 +16,12 @@
         Your browser does not support the audio element.
       </audio>
     
+      <audio id="right-sound">
+        <source src="success.ogg" type="audio/ogg">
+        <source src="success.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    
 <form method="post" id="login-form">
   
     <div class="imgcontainer">
@@ -48,6 +54,7 @@
     
         if (answer === "web_dev") {
             document.getElementById("wrong-image").src = "correct.jpg"
+            document.getElementById("right-sound").play();
             
 
         } else {
