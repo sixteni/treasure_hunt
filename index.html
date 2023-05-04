@@ -9,6 +9,12 @@
 </head>
 
 <body>
+
+    <audio id="wrong-sound">
+        <source src="ohno.ogg" type="audio/ogg">
+        <source src="ohno.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
     
 <form method="post" id="login-form">
   
@@ -46,6 +52,7 @@
 
         } else {
             document.getElementById("wrong-image").style.visibility = "visible";
+            document.getElementById("wrong-sound").play();
         }
     })
     </script>
