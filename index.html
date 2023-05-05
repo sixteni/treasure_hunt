@@ -25,24 +25,24 @@
 <form method="post" id="login-form">
   
     <div class="imgcontainer">
-        <img src="wrong.gif" alt="Avatar" class="avatar" id="wrong-image">        
+        <img src="hint.jpg" alt="Avatar" class="avatar" id="image">      
+        <p id="image-text">Lös alla 3 korsord för att hitta lösenordet! Varje siffra motsvarar ordningen i lösenordet.</p>
     </div>
 
-    <div class="imgcontainer">
-        
-    </div>
-  
+    
 
   <div class="container">
     
-    <label for="uname"><b>Svar:</b></label>
-    <input type="text" placeholder="Skriv svar här"  name="uname" required>
+    <label for="uname"><b>Lösenord:</b></label>
+    <input type="text" placeholder="Skriv lösenordet här"  name="answer">
         
-    <button id="login-form-submit">Lämna svar</button>
+    <button id="login-form-submit"><b>Lämna svar</b></button>
   </div>
 
 </form>
+   
     <script>
+   
     const loginForm = document.getElementById("login-form");
     const loginButton = document.getElementById("login-form-submit");
     
@@ -50,15 +50,17 @@
     loginButton.addEventListener("click", (e) => {
         e.preventDefault();
         
-        const answer = loginForm.uname.value;
+        const answer = loginForm.answer.value;
     
-        if (answer === "web_dev") {
-            document.getElementById("wrong-image").src = "correct.jpg"
+        if (answer.toLowerCase() === "födelsedagskalas") {
+            document.getElementById("image").src = "correct.jpg"
+            document.getElementById("image-text").innerHTML = "Grattis ni löste det! Hitta platsen, för att få nästa ledtråd!"
             document.getElementById("right-sound").play();
             
 
         } else {
-            document.getElementById("wrong-image").style.visibility = "visible";
+            document.getElementById("image").src = "wrong.gif"
+            document.getElementById("image-text").innerHTML = "Fel lösenord! Försök igen!"
             document.getElementById("wrong-sound").play();
         }
     })
