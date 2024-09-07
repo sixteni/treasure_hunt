@@ -25,7 +25,7 @@
 <form method="post" id="login-form">
   
     <div class="imgcontainer">
-        <img src="hint.jpg" alt="Avatar" class="avatar" id="image">      
+        <img src="godis.jpg" alt="Avatar" class="avatar" id="image">      
         <p id="image-text">Lös alla 3 korsord för att hitta lösenordet! Varje siffra motsvarar ordningen i lösenordet.</p>
     </div>
 
@@ -34,7 +34,9 @@
   <div class="container">
     
     <label for="uname"><b>Lösenord:</b></label>
-    <input type="text" placeholder="Skriv lösenordet här"  name="answer">
+    <input type="text" placeholder="Lovis nummer:"  name="answer_lovis">
+    <input type="text" placeholder="Hugos nummer:"  name="answer_hugo">
+    <input type="text" placeholder="Theos nummer:"  name="answer_theo">
         
     <button id="login-form-submit"><b>Lämna svar</b></button>
   </div>
@@ -50,11 +52,13 @@
     loginButton.addEventListener("click", (e) => {
         e.preventDefault();
         
-        const answer = loginForm.answer.value;
+        const answer_lovis = loginForm.answer_lovis.value;
+        const answer_hugo = loginForm.answer_hugo.value;
+        const answer_theo = loginForm.answer_theo.value;
     
-        if (answer.toLowerCase() === "födelsedagskalas") {
-            document.getElementById("image").src = "correct.jpg"
-            document.getElementById("image-text").innerHTML = "Grattis ni löste det! Hitta platsen, för att få nästa ledtråd!"
+        if (answer_lovis.toLowerCase() == "2546" && answer_hugo.toLowerCase() == "3006" && answer_theo.toLowerCase() == "1303") {
+            document.getElementById("image").src = "clue.jpg"
+            document.getElementById("image-text").innerHTML = "Grattis ni löste det! Hitta platsen så hittar ni godiset!"
             document.getElementById("right-sound").play();
             
 
