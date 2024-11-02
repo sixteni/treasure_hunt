@@ -37,6 +37,7 @@
     <input type="text" placeholder="Lovis nummer:"  name="answer_lovis">
     <input type="text" placeholder="Hugos nummer:"  name="answer_hugo">
     <input type="text" placeholder="Theos nummer:"  name="answer_theo">
+    <input type="text" placeholder="Arvids nummer:"  name="answer_arvid">
         
     <button id="login-form-submit"><b>Lämna svar</b></button>
   </div>
@@ -56,7 +57,7 @@
         const answer_hugo = loginForm.answer_hugo.value;
         const answer_theo = loginForm.answer_theo.value;
     
-        if (answer_lovis.toLowerCase() == "godis" && answer_hugo.toLowerCase() == "hugo" && answer_theo.toLowerCase() == "theo") {
+        if (answer_lovis.toLowerCase() == "981211" && answer_hugo.toLowerCase() == "4321" && answer_theo.toLowerCase() == "4312" && answer_arvid.toLowerCase() == "3412") {
             document.getElementById("image").src = "clue.jpg"
             document.getElementById("image-text").innerHTML = "Grattis ni löste det! Hitta platsen så hittar ni godiset!"
             document.getElementById("right-sound").play();
