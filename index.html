@@ -34,9 +34,9 @@
   <div class="container">
     
     <label for="uname"><b>Lösenord:</b></label>
-    <input type="text" placeholder="Lovis ord är:"  name="answer_lovis">
-    <input type="text" placeholder="Hugos nummer:"  name="answer_hugo">
-    <input type="text" placeholder="Theos nummer:"  name="answer_theo">
+    <input type="text" placeholder="Lovis svar:"  name="answer_lovis">
+    <input type="text" placeholder="Hugos svar:"  name="answer_hugo">
+    <input type="text" placeholder="Theos svar:"  name="answer_theo">
         
     <button id="login-form-submit"><b>Lämna svar</b></button>
   </div>
@@ -47,24 +47,46 @@
    
     const loginForm = document.getElementById("login-form");
     const loginButton = document.getElementById("login-form-submit");
-    
+  
+	let config;
+
+    // Load answers and clue
+    fetch("config.json")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Could not load config.json");
+            }
+
+            return response.json();
+        })
+        .then(data => {
+            config = data;
+        })
+        .catch(error => {
+			console.error("Failed to load config.json:", error);
+		});
   
     loginButton.addEventListener("click", (e) => {
         e.preventDefault();
+		
+		if (!config) {
+            alert("Kluringarna kunde inte laddas. Försök igen.");
+            return;
+        }
         
         const answer_lovis = loginForm.answer_lovis.value;
         const answer_hugo = loginForm.answer_hugo.value;
         const answer_theo = loginForm.answer_theo.value;
-    
 
-        if (answer_lovis.toLowerCase() == "35" && answer_hugo.toLowerCase() == "207" && answer_theo.toLowerCase() == "042") {
-            document.getElementById("image").src = "clue.jpg"
-            document.getElementById("image-text").innerHTML = "Grattis ni löste det! Hitta platserna så hittar ni godiset!"
+        if (answer_lovis.toLowerCase() == config.lovis.toLowerCase() && answer_hugo.toLowerCase() == config.hugo.toLowerCase() && answer_theo.toLowerCase() == config.theo.toLowerCase()) {            
+			document.getElementById("image").style.display = "none";
+            document.getElementById("image-text").innerHTML = config.clue;
             document.getElementById("right-sound").play();
             
 
         } else {
             document.getElementById("image").src = "wrong.gif"
+			document.getElementById("image").style.display = "block";
             document.getElementById("image-text").innerHTML = "Fel lösenord! Försök igen!"
             document.getElementById("wrong-sound").play();
         }
@@ -76,7 +98,3 @@
 </body>
 
 </html>
-
-
-
-
